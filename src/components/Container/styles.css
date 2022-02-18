@@ -1,0 +1,23 @@
+.root-container {
+    margin-top: 15px;
+}
+
+.paper-container {
+    padding: 15px;
+}
+
+.items-container {
+    margin-top: 15px;
+}
+
+.title-row {
+    background: #503d0911;
+}
+
+.accordion-item {
+    background: #926f0e11;
+}
+
+.line-break {
+    white-space: normal;
+  }
