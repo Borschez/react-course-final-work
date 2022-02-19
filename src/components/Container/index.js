@@ -7,6 +7,22 @@ import { Accordion, AccordionDetails, AccordionSummary, Paper, Typography } from
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ReactMarkdown from 'react-markdown'
 
+export const JustContainer = (props) => {
+    const {children} = props;
+    return (
+        <React.Fragment>
+            <CssBaseline />
+            <Container maxWidth="xl" className='root-container'>
+                <Box >
+                    <Paper elevation={3} className='paper-container'>
+                        {children}
+                    </Paper>
+                </Box>
+            </Container>
+        </React.Fragment>
+    )
+}
+
 export default function SimpleContainer(props) {
     const { title, description, items } = props.page;
     const [expanded, setExpanded] = React.useState(false);

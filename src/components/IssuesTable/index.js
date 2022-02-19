@@ -47,7 +47,7 @@ export const IssuesTable = (props) => {
                         <TableCell>{row.number}</TableCell>
                         <TableCell>{row.body}</TableCell>
                         <TableCell><Link href={row.user.html_url}>{row.user.login}</Link></TableCell>
-                        <TableCell><RouterLink route={`/issue/${row.number}/comments`}><IconButton><ChatIcon /></IconButton></RouterLink><IconButton href={row.html_url}><GitHubIcon /></IconButton></TableCell>
+                        <TableCell><RouterLink to={`/issue/${row.number}/comments`}><IconButton><ChatIcon /></IconButton></RouterLink><IconButton href={row.html_url}><GitHubIcon /></IconButton></TableCell>
                     </TableRow>
                 ))}
             </TableBody>

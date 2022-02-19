@@ -14,7 +14,7 @@ import { useEffect, useMemo } from 'react';
 import { loadPagesAction } from './store/pages/actions';
 import { Routes, Route, Link } from "react-router-dom";
 import { courseData } from './courseData';
-import SimpleContainer from './components/Container';
+import SimpleContainer, { JustContainer } from './components/Container';
 import IssueTableContainer from './components/IssuesTable';
 import { IssuesComments } from './components/IssueComments';
 
@@ -55,7 +55,8 @@ const App = (props) => {
       <Routes>
         <Route path="/issues" element={<IssueTableContainer />} />
         <Route path="/" element={<SimpleContainer page={selectedPage || pages[0]} />} />
-        <Route path="/issue/:issueNumber/comments" element={<IssuesComments /> } />
+        <Route path="/issue/:issueNumber/comments" element={<JustContainer><IssuesComments /></JustContainer> } />
+        <Route path="*" element={<JustContainer>404 Page not Found</JustContainer>} />
       </Routes>
       {/*  */}
     </div>

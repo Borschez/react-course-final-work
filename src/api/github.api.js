@@ -18,10 +18,10 @@ export const updateIssueApi = async (issueNumber, state) =>
         })
     }).then((response) => response.json());
 
-export const getIssueCommentsApi = (issueNumber) => {
+export const getIssueCommentsApi = (issueNumber) =>
     fetch(`https://api.github.com/repos/Borschez/practice-9-1/issues/${issueNumber}/comments`)
-        .then(response => response.json())    
-}
+        .then(response => response.json())
+
 
 
 export const getIssuesApi = (state) =>

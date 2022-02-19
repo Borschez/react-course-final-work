@@ -9,10 +9,13 @@ import { IconButton, Link, Paper } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 import { getIssueCommentsApi } from '../../api/github.api';
+import { useParams } from 'react-router-dom';
 
 export const IssuesComments = (props) => {
+    const { issueNumber } = useParams();
     const [comments, setComments] = useState([]);
-    const { issueNumber } = props;
+    
+    console.log(props);
     useEffect(() => {
         getIssueCommentsApi(issueNumber).then(json => setComments(json));
     }, [])
