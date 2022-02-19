@@ -14,6 +14,7 @@ import { alpha, styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../logo.svg';
 import './styles.css';
 
@@ -59,7 +60,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const MainHeader = (props) => {
-    const { menuItems, title, setSelectedPage } = props;
+    const { menuItems, title, setSelectedPage, route } = props;
     const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
     const handleDrawerOpen = () => {
@@ -70,6 +71,10 @@ const MainHeader = (props) => {
         setIsDrawerOpen(false);
     };
 
+    const handleListItemClick = () => {
+        <Link to="/about">About</Link>
+    }
+
     const list = () => (
         <Box
             sx={{ width: 300 }}
@@ -79,17 +84,30 @@ const MainHeader = (props) => {
         >
             <List>
                 {menuItems.map(({ title, route, divider, icon, id }) => {
-                    if (divider) return <Divider key={title}/>
+                    if (divider) return <Divider key={title} />
+                    if (route) return (
+                        <Link to={route} key={title}>
+                            <ListItem button key={title}>
+                                <ListItemIcon>
+                                    {icon}
+                                </ListItemIcon>
+                                <ListItemText primary={title} />
+                            </ListItem>
+                        </Link>
+                    )
 
                     return (
-                        <ListItem button key={title} onClick={()=> setSelectedPage(id)}>
-                            <ListItemIcon>
-                                {icon}
-                            </ListItemIcon>
-                            <ListItemText primary={title} />
-                        </ListItem>)
-                })}                
-            </List>            
+                        <Link to="/" key={title}>
+                            <ListItem button onClick={() => setSelectedPage(id)}>
+                                <ListItemIcon>
+                                    {icon}
+                                </ListItemIcon>
+                                <ListItemText primary={title} />
+                            </ListItem>
+                        </Link>
+                    )
+                })}
+            </List>
         </Box>
     );
 

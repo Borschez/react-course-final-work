@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { StyledEngineProvider } from '@mui/material/styles';
-import { Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 
 import rootReducer from './store/reducers';
@@ -14,9 +15,11 @@ const store = createStore(rootReducer);
 ReactDOM.render(
   <React.StrictMode>
     <StyledEngineProvider injectFirst>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
     </StyledEngineProvider>
   </React.StrictMode>,
   document.getElementById('root')
